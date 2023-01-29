@@ -24,9 +24,6 @@ COPY ./target/release/nimiq-client /usr/local/bin/nimiq-client
 # Copy .ZKP to node.
 COPY ./.zkp /home/nimiq/.zkp/
 
-# Expose sync port
-EXPOSE 9100
-
 # Expose RPC port
 EXPOSE 8648
 
