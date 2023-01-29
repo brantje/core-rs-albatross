@@ -1,6 +1,6 @@
 FROM ubuntu:20.04
 
-# Install dependencies and tini.
+# Install dependencies.
 RUN apt-get update \
     && apt-get --no-install-recommends -y install libssl-dev libssl1.1 \
     && rm -rf /var/lib/apt/lists/*
@@ -34,7 +34,7 @@ EXPOSE 8648
 EXPOSE 9200
 
 # Run CMD so we can use other bin
-CMD [ "nimiq-client" ]
+ENTRYPOINT [ "nimiq-client" ]
 
 LABEL \
     org.opencontainers.image.title="Nimiq core-rs-albatross" \
