@@ -8,12 +8,12 @@ on:
 jobs:
   rust_build:
     name: Build Nimiq with release flag
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v2
       - name: Install protoc
         run: |
-          sudo apt-get update && sudo apt-get install -y protobuf-compiler libprotobuf-dev libssl-dev libssl1.1
+          sudo apt-get update && sudo apt-get install -y protobuf-compiler
       - uses: actions-rs/toolchain@v1
         with:
           toolchain: stable
@@ -32,7 +32,7 @@ jobs:
             target/release/nimiq-rpc
 
   build_docker:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     name: Build & publish docker image
     needs: rust_build
     steps:
