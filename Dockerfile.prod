@@ -2,7 +2,7 @@ FROM ubuntu:22.04
 
 # Install dependencies.
 RUN apt-get update \
-    && apt-get --no-install-recommends -y install libssl3 \
+    && apt-get --no-install-recommends -y install libssl3 tini \
     && rm -rf /var/lib/apt/lists/*
 
 # Run as unprivileged user.
@@ -28,7 +28,7 @@ EXPOSE 8648
 EXPOSE 9200
 
 # Run CMD so we can use other bin
-ENTRYPOINT [ "nimiq-client" ]
+ENTRYPOINT [ "/usr/bin/tini", "--", "nimiq-client" ]
 
 LABEL \
     org.opencontainers.image.title="Nimiq core-rs-albatross" \
