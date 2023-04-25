@@ -128,7 +128,8 @@ curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d "address=NQ
 #### Becoming a validator
 
 Check [this guide](docs/becoming_validator.md) for steps on becoming a validator.
-## Docker
+
+## Docker (outgoing connections only)
 
 Use `docker pull ghcr.io/nimiq/core-rs-albatross:latest` to pull the latest docker image.
 Then run it:
@@ -141,9 +142,10 @@ docker run -v $(pwd)/data:/home/nimiq/.nimiq -p 8648 -p 9200:9200 --name nimiq-r
 Overview of exposed ports:
 | Port | Description |
 |------|--------------|
-| 9100 | Sync port |
 | 8648 | RPC Port |
 | 9200 | Metrics port |
+
+As you can see, the default port (8443) for accepting connections from other nodes is not exposed, so this is an outgoing connections only container. It is intended for RPC use and metrics gathering.
 
 ## Contributing
 
