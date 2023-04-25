@@ -21,9 +21,6 @@ COPY ./client.toml /home/nimiq/.nimiq
 
 COPY ./target/release/nimiq-client /usr/local/bin/nimiq-client
 
-# Copy .ZKP to node.
-COPY ./.zkp /home/nimiq/.zkp/
-
 # Expose RPC port
 EXPOSE 8648
 
